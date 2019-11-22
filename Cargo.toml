@@ -1,0 +1,28 @@
+[[bin]]
+name = "graph-sdk"
+path = "src/main.rs"
+
+[package]
+name = "graph-sdk"
+version = "0.1.0"
+authors = ["Graph4w3 Team"]
+edition = "2018"
+default-run = "graph-sdk"
+
+[dependencies]
+ctrlc = { version = "3.1.3", features = ["termination"] }
+cli = { package = "graph-sdk-cli", path = "node/cli", features = ["cli"] }
+
+[build-dependencies]
+vergen = "3"
+build-script-utils = { package = "substrate-build-script-utils", git = "https://github.com/graph4w3/substrate.git", branch = "master" }
+
+[workspace]
+members = [
+	"node/cli",
+	"node/runtime"
+]
+
+[profile.release]
+# Substrate runtime requires unwinding.
+panic = "unwind"

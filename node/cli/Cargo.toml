@@ -1,0 +1,58 @@
+[package]
+name = "graph-sdk-cli"
+version = "0.1.0"
+authors = ["Graph4w3 Team"]
+edition = "2018"
+
+[dependencies]
+# third party denpendencies
+codec = { package = "parity-scale-codec", version = "1.1.0" }
+log = "0.4.8"
+parking_lot = "0.9.0"
+futures = "0.1.29"
+derive_more = "0.15.0"
+trie-root = "0.15.2"
+
+# primitives
+aura = { package = "substrate-consensus-aura", git = "https://github.com/graph4w3/substrate.git", branch = "master" }
+aura-primitives = { package = "substrate-consensus-aura-primitives", git = "https://github.com/graph4w3/substrate.git", branch = "master" }
+grandpa = { package = "substrate-finality-grandpa", git = "https://github.com/graph4w3/substrate.git", branch = "master" }
+grandpa-primitives = { package = "substrate-finality-grandpa-primitives", git = "https://github.com/graph4w3/substrate.git", branch = "master" }
+primitives = { package = "substrate-primitives", git = "https://github.com/graph4w3/substrate.git", branch = "master" }
+sr-primitives = { git = "https://github.com/graph4w3/substrate.git", branch = "master" }
+
+# core substrate modules
+substrate-executor = { git = "https://github.com/graph4w3/substrate.git", branch = "master" }
+substrate-service = { git = "https://github.com/graph4w3/substrate.git", branch = "master" }
+substrate-client = { git = "https://github.com/graph4w3/substrate.git", branch = "master" }
+inherents = { package = "substrate-inherents", git = "https://github.com/graph4w3/substrate.git", branch = "master" }
+transaction-pool = { package = "substrate-transaction-pool", git = "https://github.com/graph4w3/substrate.git", branch = "master" }
+network = { package = "substrate-network", git = "https://github.com/graph4w3/substrate.git", branch = "master" }
+basic-authorship = { package = "substrate-basic-authorship", git = "https://github.com/graph4w3/substrate.git", branch = "master" }
+
+# dev dependencies
+runtime-io = { package = "sr-io",  git = "https://github.com/graph4w3/substrate.git", branch = "master" }
+
+# Node-specific dependencies
+runtime = { package = "graph-sdk-runtime", path = "../runtime" }
+
+# CLI-specific dependencies
+substrate-cli = { git = "https://github.com/graph4w3/substrate.git", branch = "master", optional = true }
+tokio = { version = "0.1.22", optional = true }
+exit-future = { version = "0.1.4", optional = true }
+ctrlc = { version = "3.1.3", features = ["termination"], optional = true }
+
+[features]
+default = ["cli"]
+cli = [
+	"substrate-cli",
+	"tokio",
+	"exit-future",
+	"ctrlc",
+	"substrate-service/rocksdb"
+]
+wasmtime = [
+	"cli",
+	"substrate-cli/wasmtime",
+	"substrate-service/wasmtime",
+]
