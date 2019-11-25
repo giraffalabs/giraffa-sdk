@@ -25,6 +25,9 @@ use version::RuntimeVersion;
 #[cfg(feature = "std")]
 use version::NativeVersion;
 
+// graph
+use module_template;
+
 // A few exports that help ease life for downstream crates.
 #[cfg(any(feature = "std", test))]
 pub use sr_primitives::BuildStorage;
@@ -229,6 +232,10 @@ impl sudo::Trait for Runtime {
 	type Proposal = Call;
 }
 
+impl module_template::Trait for Runtime {
+	type Event = Event;
+}
+
 construct_runtime!(
 	pub enum Runtime where
 		Block = Block,
@@ -243,6 +250,7 @@ construct_runtime!(
 		Balances: balances::{default, Error},
 		TransactionPayment: transaction_payment::{Module, Storage},
 		Sudo: sudo,
+		ModuleTemplate: module_template::{Module, Call, Storage, Event<T>},
 		RandomnessCollectiveFlip: randomness_collective_flip::{Module, Call, Storage},
 	}
 );
