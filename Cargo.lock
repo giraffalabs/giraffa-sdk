@@ -1457,6 +1457,7 @@ dependencies = [
  "frame-support 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
  "frame-system 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
  "frame-system-rpc-runtime-api 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
+ "module-template 2.0.0",
  "pallet-aura 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
  "pallet-balances 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
  "pallet-grandpa 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
@@ -2600,6 +2601,19 @@ dependencies = [
  "net2 0.2.33 (registry+https://github.com/rust-lang/crates.io-index)",
  "winapi 0.2.8 (registry+https://github.com/rust-lang/crates.io-index)",
  "ws2_32-sys 0.2.1 (registry+https://github.com/rust-lang/crates.io-index)",
+]
+
+[[package]]
+name = "module-template"
+version = "2.0.0"
+dependencies = [
+ "frame-support 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
+ "frame-system 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
+ "parity-scale-codec 1.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "serde 1.0.102 (registry+https://github.com/rust-lang/crates.io-index)",
+ "sr-io 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
+ "sr-primitives 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
+ "substrate-primitives 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
 ]
 
 [[package]]
