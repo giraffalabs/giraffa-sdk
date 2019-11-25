@@ -1,6 +1,6 @@
 [[bin]]
 name = "graph-sdk"
-path = "src/main.rs"
+path = "node/cli/bin/main.rs"
 
 [package]
 name = "graph-sdk"
