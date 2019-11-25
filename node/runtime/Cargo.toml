@@ -42,6 +42,9 @@ sudo = { package = "pallet-sudo", git = "https://github.com/graph4w3/substrate.g
 timestamp = { package = "pallet-timestamp", git = "https://github.com/graph4w3/substrate.git", branch = "master", default-features = false }
 transaction-payment = { package = "pallet-transaction-payment", git = "https://github.com/graph4w3/substrate.git", branch = "master", default-features = false }
 
+# graph dependencies
+module-template = { package = "module-template", path = "../../modules/module-template", default-features = false }
+
 [build-dependencies]
 wasm-builder-runner = { package = 'substrate-wasm-builder-runner', git = "https://github.com/graph4w3/substrate.git", branch = "master" }
 
@@ -74,4 +77,5 @@ std = [
 	"transaction-payment/std",
 	"tx-pool-api/std",
 	"version/std",
+	"module-template/std"
 ]
