@@ -1417,6 +1417,7 @@ dependencies = [
  "serde 1.0.102 (registry+https://github.com/rust-lang/crates.io-index)",
  "sr-io 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
  "sr-primitives 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
+ "sr-std 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
  "substrate-primitives 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
 ]
 

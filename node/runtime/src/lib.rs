@@ -240,6 +240,9 @@ impl module_template::Trait for Runtime {
 
 impl content::Trait for Runtime {
 	type Event = Event;
+	type ContentIdentifier = Hash;
+	type PropertyKey = u64;
+	type PropertyValue = u64;
 }
 
 impl links::Trait for Runtime {
