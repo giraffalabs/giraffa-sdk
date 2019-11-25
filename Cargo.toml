@@ -20,7 +20,8 @@ build-script-utils = { package = "substrate-build-script-utils", git = "https://
 [workspace]
 members = [
 	"node/cli",
-	"node/runtime"
+	"node/runtime",
+	"modules/module-template"
 ]
 
 [profile.release]
