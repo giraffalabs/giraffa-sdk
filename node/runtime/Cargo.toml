@@ -26,16 +26,19 @@ version = { package = "sr-version", git = "https://github.com/graph4w3/substrate
 # dev dependencies
 runtime-io = { package = "sr-io", git = "https://github.com/graph4w3/substrate.git", branch = "master", default-features = false }
 
+# frame dependenciies
+executive = { package = "frame-executive", git = "https://github.com/graph4w3/substrate.git", branch = "master", default-features = false }
+support = { package = "frame-support", git = "https://github.com/graph4w3/substrate.git", branch = "master", default-features = false }
+system = { package = "frame-system", git = "https://github.com/graph4w3/substrate.git", branch = "master", default-features = false }
+system-rpc-runtime-api = { package = "frame-system-rpc-runtime-api", git = "https://github.com/graph4w3/substrate.git", branch = "master", default-features = false }
+
 # palette dependencies
 aura = { package = "pallet-aura", git = "https://github.com/graph4w3/substrate.git", branch = "master", default-features = false }
 balances = { package = "pallet-balances", git = "https://github.com/graph4w3/substrate.git", branch = "master", default-features = false }
-executive = { package = "palette-executive", git = "https://github.com/graph4w3/substrate.git", branch = "master", default-features = false }
 grandpa = { package = "pallet-grandpa", git = "https://github.com/graph4w3/substrate.git", branch = "master", default-features = false }
 indices = { package = "pallet-indices", git = "https://github.com/graph4w3/substrate.git", branch = "master", default-features = false }
 randomness-collective-flip = { package = "pallet-randomness-collective-flip", git = "https://github.com/graph4w3/substrate.git", branch = "master", default-features = false }
 sudo = { package = "pallet-sudo", git = "https://github.com/graph4w3/substrate.git", branch = "master", default-features = false }
-support = { package = "palette-support", git = "https://github.com/graph4w3/substrate.git", branch = "master", default-features = false }
-system = { package = "palette-system", git = "https://github.com/graph4w3/substrate.git", branch = "master", default-features = false }
 timestamp = { package = "pallet-timestamp", git = "https://github.com/graph4w3/substrate.git", branch = "master", default-features = false }
 transaction-payment = { package = "pallet-transaction-payment", git = "https://github.com/graph4w3/substrate.git", branch = "master", default-features = false }
 

@@ -1,4 +1,4 @@
-//! The Substrate Node runtime. This can be compiled with `#[no_std]`, ready for Wasm.
+//! The Substrate Node Template runtime. This can be compiled with `#[no_std]`, ready for Wasm.
 
 #![cfg_attr(not(feature = "std"), no_std)]
 // `construct_runtime!` does a lot of recursion and requires us to increase the limit to 256.
@@ -11,13 +11,12 @@ include!(concat!(env!("OUT_DIR"), "/wasm_binary.rs"));
 use rstd::prelude::*;
 use primitives::OpaqueMetadata;
 use sr_primitives::{
-	ApplyResult, transaction_validity::TransactionValidity, generic, create_runtime_str,
+	ApplyExtrinsicResult, transaction_validity::TransactionValidity, generic, create_runtime_str,
 	impl_opaque_keys, MultiSignature
 };
 use sr_primitives::traits::{
 	NumberFor, BlakeTwo256, Block as BlockT, StaticLookup, Verify, ConvertInto, IdentifyAccount
 };
-use sr_primitives::weights::Weight;
 use sr_api::impl_runtime_apis;
 use aura_primitives::sr25519::AuthorityId as AuraId;
 use grandpa::AuthorityList as GrandpaAuthorityList;
@@ -32,7 +31,11 @@ pub use sr_primitives::BuildStorage;
 pub use timestamp::Call as TimestampCall;
 pub use balances::Call as BalancesCall;
 pub use sr_primitives::{Permill, Perbill};
-pub use support::{StorageValue, construct_runtime, parameter_types, traits::Randomness};
+pub use support::{
+	StorageValue, construct_runtime, parameter_types,
+	traits::Randomness,
+	weights::Weight,
+};
 
 /// An index to a block.
 pub type BlockNumber = u32;
@@ -60,8 +63,6 @@ pub type Hash = primitives::H256;
 /// Digest item type.
 pub type DigestItem = generic::DigestItem<Hash>;
 
-/// Used for the modules
-// mod template;
 
 /// Opaque types. These are used by the CLI to instantiate machinery that don't need to know
 /// the specifics of the runtime. They can then be made to be agnostic over specific formats
@@ -294,7 +295,7 @@ impl_runtime_apis! {
 	}
 
 	impl block_builder_api::BlockBuilder<Block> for Runtime {
-		fn apply_extrinsic(extrinsic: <Block as BlockT>::Extrinsic) -> ApplyResult {
+		fn apply_extrinsic(extrinsic: <Block as BlockT>::Extrinsic) -> ApplyExtrinsicResult {
 			Executive::apply_extrinsic(extrinsic)
 		}
 
