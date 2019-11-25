@@ -9,19 +9,19 @@ pub trait Trait: system::Trait {
 	type Event: From<Event<Self>> + Into<<Self as system::Trait>::Event>;
 
 	/// ID which identifies a content
-	type ContentIdentifier: Parameter + Member + Debug + Default + Copy;
+	type ContentIdentifier: Parameter + Member + Debug + Copy;
 
 	// Key of a property
-	type PropertyKey: Parameter + Member + Debug + Default + Copy;
+	type PropertyKey: Parameter + Member + Debug + Copy;
 
 	// Value of a property
-	type PropertyValue: Parameter + Member + Debug + Default + Copy;
+	type PropertyValue: Parameter + Member + Debug + Copy;
 }
 
 decl_storage! {
 	trait Store for Module<T: Trait> as Content {
 		// Key/Value storage for each content
-		ContentProperties get(content_properties): map (T::ContentIdentifier, T::PropertyKey) => T::PropertyValue;
+		ContentProperties get(content_properties): map (T::ContentIdentifier, T::PropertyKey) => Option<T::PropertyValue>;
 	}
 }
 

@@ -29,6 +29,7 @@ use version::NativeVersion;
 use module_template;
 use content;
 use links;
+use codec::{Encode, Decode};
 
 // A few exports that help ease life for downstream crates.
 #[cfg(any(feature = "std", test))]
@@ -238,11 +239,18 @@ impl module_template::Trait for Runtime {
 	type Event = Event;
 }
 
+#[derive(Encode, Decode, Debug, Clone, Copy, PartialEq, Eq)]
+pub enum PropertyValue {
+	Array([u8;4]),
+	Int(u64),
+	Bool(bool)
+}
+
 impl content::Trait for Runtime {
 	type Event = Event;
 	type ContentIdentifier = Hash;
 	type PropertyKey = u64;
-	type PropertyValue = u64;
+	type PropertyValue = PropertyValue;
 }
 
 impl links::Trait for Runtime {
