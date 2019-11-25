@@ -1408,6 +1408,32 @@ dependencies = [
 ]
 
 [[package]]
+name = "graph-content"
+version = "2.0.0"
+dependencies = [
+ "frame-support 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
+ "frame-system 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
+ "parity-scale-codec 1.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "serde 1.0.102 (registry+https://github.com/rust-lang/crates.io-index)",
+ "sr-io 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
+ "sr-primitives 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
+ "substrate-primitives 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
+]
+
+[[package]]
+name = "graph-links"
+version = "2.0.0"
+dependencies = [
+ "frame-support 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
+ "frame-system 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
+ "parity-scale-codec 1.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "serde 1.0.102 (registry+https://github.com/rust-lang/crates.io-index)",
+ "sr-io 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
+ "sr-primitives 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
+ "substrate-primitives 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
+]
+
+[[package]]
 name = "graph-sdk"
 version = "0.1.0"
 dependencies = [
@@ -1457,6 +1483,8 @@ dependencies = [
  "frame-support 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
  "frame-system 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
  "frame-system-rpc-runtime-api 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
+ "graph-content 2.0.0",
+ "graph-links 2.0.0",
  "module-template 2.0.0",
  "pallet-aura 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
  "pallet-balances 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
