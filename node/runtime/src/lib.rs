@@ -255,6 +255,11 @@ impl content::Trait for Runtime {
 
 impl links::Trait for Runtime {
 	type Event = Event;
+	type ContentIdentifier = Hash;
+	type LinkIdentifier = u64;
+	type LinkType = u32;
+	type PropertyKey = u64;
+	type PropertyValue = PropertyValue;
 }
 
 construct_runtime!(
