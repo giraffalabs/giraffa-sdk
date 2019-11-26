@@ -52,18 +52,35 @@ decl_module! {
 
 			<Links<T>>::insert((from, to, link_type), new_count);
 			<LinkCount<T>>::put(new_count);
+
+			Self::deposit_event(RawEvent::ContentLinked(sender, from, to, link_type));
 		}
 
 		fn set_property(origin, lid: T::LinkIdentifier, key: T::PropertyKey, value: T::PropertyValue) {
 			let sender = ensure_signed(origin)?;
+
 			<LinkProperties<T>>::insert((lid, key), value);
+
+			Self::deposit_event(RawEvent::LinkPropertySet(sender, lid, key, value));
 		}
 
 	}
 }
 
 decl_event!(
-	pub enum Event<T> where AccountId = <T as system::Trait>::AccountId {
+	pub enum Event<T> 
+	where 
+		AccountId = <T as system::Trait>::AccountId,
+		ContentIdentifier = <T as Trait>::ContentIdentifier,
+		LinkIdentifier = <T as Trait>::LinkIdentifier,
+		LinkType = <T as Trait>::LinkType,
+		PropertyKey = <T as Trait>::PropertyKey,
+		PropertyValue = <T as Trait>::PropertyValue
+	{
 		SomethingStored(u32, AccountId),
+		// A content was linked.
+		ContentLinked(AccountId, ContentIdentifier, ContentIdentifier, LinkType),
+		// A property of a link was set.
+		LinkPropertySet(AccountId, LinkIdentifier, PropertyKey, PropertyValue),
 	}
 );

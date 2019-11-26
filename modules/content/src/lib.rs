@@ -33,14 +33,25 @@ decl_module! {
 
 		fn set_property(origin, cid: T::ContentIdentifier, key: T::PropertyKey, value: T::PropertyValue) {
 			let sender = ensure_signed(origin)?;
+
 			<ContentProperties<T>>::insert((cid, key), value);
+
+			Self::deposit_event(RawEvent::ContentPropertySet(sender, cid, key, value));
 		}
 
 	}
 }
 
 decl_event!(
-	pub enum Event<T> where AccountId = <T as system::Trait>::AccountId {
+	pub enum Event<T> 
+	where 
+		AccountId = <T as system::Trait>::AccountId,
+		ContentIdentifier = <T as Trait>::ContentIdentifier,
+		PropertyKey = <T as Trait>::PropertyKey,
+		PropertyValue = <T as Trait>::PropertyValue
+	{
 		SomethingStored(u32, AccountId),
+		// A property of a content is set.
+		ContentPropertySet(AccountId, ContentIdentifier, PropertyKey, PropertyValue),
 	}
 );
