@@ -241,8 +241,9 @@ impl module_template::Trait for Runtime {
 
 #[derive(Encode, Decode, Debug, Clone, Copy, PartialEq, Eq)]
 pub enum PropertyValue {
-	Array([u8;4]),
-	Int(u64),
+	Char32([u8; 32]),	
+	Hash(Hash),
+	Uint64(u64),
 	Bool(bool)
 }
 
