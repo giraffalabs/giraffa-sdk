@@ -2,7 +2,28 @@
 
 use support::{decl_module, decl_storage, decl_event, dispatch:: { Result, fmt::Debug }, Parameter};
 use system::ensure_signed;
-use sr_primitives::{ traits::{ Member } };
+use sr_primitives::RuntimeDebug;
+use sr_primitives::{ traits::{ Member, SimpleArithmetic, Bounded, CheckedAdd } };
+use codec::{Encode, Decode};
+
+
+type PropertyKey = u64;
+
+#[repr(u8)]
+#[derive(Clone, Encode, Decode, PartialEq, Eq, RuntimeDebug)]
+enum PropertyKeyValue {
+	Owner = 0,
+	Hello = 1,
+}
+
+#[derive(Clone, Encode, Decode, PartialEq, Eq, RuntimeDebug)]
+pub enum PropertyValue<Hash, AccountId> {
+	Char32([u8; 32]),	
+	Hash(Hash),
+	Uint64(u64),
+	Bool(bool),
+	AccountId(AccountId)
+}
 
 pub trait Trait: system::Trait {
 	/// The overarching event type.
@@ -11,17 +32,12 @@ pub trait Trait: system::Trait {
 	/// ID which identifies a content
 	type ContentIdentifier: Parameter + Member + Debug + Copy;
 
-	// Key of a property
-	type PropertyKey: Parameter + Member + Debug + Copy;
-
-	// Value of a property
-	type PropertyValue: Parameter + Member + Debug + Copy;
 }
 
 decl_storage! {
 	trait Store for Module<T: Trait> as Content {
 		// Key/Value storage for each content
-		ContentProperties get(content_properties): map (T::ContentIdentifier, T::PropertyKey) => Option<T::PropertyValue>;
+		ContentProperties get(content_properties): map (T::ContentIdentifier, PropertyKey) => Option<PropertyValue<T::Hash, T::AccountId>>;
 	}
 }
 
@@ -31,10 +47,21 @@ decl_module! {
 
 		fn deposit_event() = default;
 
-		fn set_property(origin, cid: T::ContentIdentifier, key: T::PropertyKey, value: T::PropertyValue) {
+		fn create(origin, cid: T::ContentIdentifier) {
 			let sender = ensure_signed(origin)?;
 
-			<ContentProperties<T>>::insert((cid, key), value);
+			let key = PropertyKey::from(PropertyKeyValue::Owner as u8); 
+			let value = <PropertyValue<T::Hash, T::AccountId>>::AccountId(sender.clone());
+
+			Self::do_set_property(cid, key, value.clone());
+
+			Self::deposit_event(RawEvent::ContentPropertySet(sender, cid, key, value));
+		}
+
+		fn set_property(origin, cid: T::ContentIdentifier, key: PropertyKey, value: PropertyValue<T::Hash, T::AccountId>) {
+			let sender = ensure_signed(origin)?;
+
+			Self::do_set_property(cid, key, value.clone());
 
 			Self::deposit_event(RawEvent::ContentPropertySet(sender, cid, key, value));
 		}
@@ -47,11 +74,18 @@ decl_event!(
 	where 
 		AccountId = <T as system::Trait>::AccountId,
 		ContentIdentifier = <T as Trait>::ContentIdentifier,
-		PropertyKey = <T as Trait>::PropertyKey,
-		PropertyValue = <T as Trait>::PropertyValue
+		Hash = <T as system::Trait>::Hash
 	{
 		SomethingStored(u32, AccountId),
 		// A property of a content is set.
-		ContentPropertySet(AccountId, ContentIdentifier, PropertyKey, PropertyValue),
+		ContentPropertySet(AccountId, ContentIdentifier, PropertyKey, PropertyValue<Hash, AccountId>),
 	}
 );
+
+impl<T: Trait> Module<T> {
+
+	fn do_set_property(cid: T::ContentIdentifier, key: PropertyKey, value: PropertyValue<T::Hash, T::AccountId>) {
+		<ContentProperties<T>>::insert((cid, key), value);
+	}
+
+}

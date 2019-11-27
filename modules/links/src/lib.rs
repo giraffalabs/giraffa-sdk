@@ -2,7 +2,27 @@
 
 use support::{decl_module, decl_storage, decl_event, dispatch:: { Result, fmt::Debug }, Parameter};
 use system::ensure_signed;
+use sr_primitives::RuntimeDebug;
 use sr_primitives::{ traits::{ Member, SimpleArithmetic, Bounded, CheckedAdd } };
+use codec::{Encode, Decode};
+
+type PropertyKey = u64;
+
+#[repr(u8)]
+#[derive(Clone, Encode, Decode, PartialEq, Eq, RuntimeDebug)]
+enum PropertyKeyValue {
+	Owner = 0,
+	Hello = 1,
+}
+
+#[derive(Clone, Encode, Decode, PartialEq, Eq, RuntimeDebug)]
+pub enum PropertyValue<Hash, AccountId> {
+	Char32([u8; 32]),	
+	Hash(Hash),
+	Uint64(u64),
+	Bool(bool),
+	AccountId(AccountId)
+}
 
 pub trait Trait: system::Trait {
 	/// The overarching event type.
@@ -17,11 +37,6 @@ pub trait Trait: system::Trait {
 	/// Link Type
 	type LinkType: Parameter + Member + Debug + Copy;
 
-	// Key of a property
-	type PropertyKey: Parameter + Member + Debug + Copy;
-
-	// Value of a property
-	type PropertyValue: Parameter + Member + Debug + Copy;
 }
 
 decl_storage! {
@@ -33,7 +48,7 @@ decl_storage! {
 		Links get(links): map (T::ContentIdentifier, T::ContentIdentifier, T::LinkType) => T::LinkIdentifier;
 
 		// Key/Value storage for each link
-		LinkProperties get(link_properties): map (T::LinkIdentifier, T::PropertyKey) => Option<T::PropertyValue>;
+		LinkProperties get(link_properties): map (T::LinkIdentifier, PropertyKey) => Option<PropertyValue<T::Hash, T::AccountId>>;
 	}
 }
 
@@ -56,10 +71,10 @@ decl_module! {
 			Self::deposit_event(RawEvent::ContentLinked(sender, from, to, link_type));
 		}
 
-		fn set_property(origin, lid: T::LinkIdentifier, key: T::PropertyKey, value: T::PropertyValue) {
+		fn set_property(origin, lid: T::LinkIdentifier, key: PropertyKey, value: PropertyValue<T::Hash, T::AccountId>) {
 			let sender = ensure_signed(origin)?;
 
-			<LinkProperties<T>>::insert((lid, key), value);
+			<LinkProperties<T>>::insert((lid, key), value.clone());
 
 			Self::deposit_event(RawEvent::LinkPropertySet(sender, lid, key, value));
 		}
@@ -74,13 +89,12 @@ decl_event!(
 		ContentIdentifier = <T as Trait>::ContentIdentifier,
 		LinkIdentifier = <T as Trait>::LinkIdentifier,
 		LinkType = <T as Trait>::LinkType,
-		PropertyKey = <T as Trait>::PropertyKey,
-		PropertyValue = <T as Trait>::PropertyValue
+		Hash = <T as system::Trait>::Hash
 	{
 		SomethingStored(u32, AccountId),
 		// A content was linked.
 		ContentLinked(AccountId, ContentIdentifier, ContentIdentifier, LinkType),
 		// A property of a link was set.
-		LinkPropertySet(AccountId, LinkIdentifier, PropertyKey, PropertyValue),
+		LinkPropertySet(AccountId, LinkIdentifier, PropertyKey, PropertyValue<Hash, AccountId>),
 	}
 );

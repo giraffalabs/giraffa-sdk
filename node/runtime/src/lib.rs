@@ -239,19 +239,9 @@ impl module_template::Trait for Runtime {
 	type Event = Event;
 }
 
-#[derive(Encode, Decode, Debug, Clone, Copy, PartialEq, Eq)]
-pub enum PropertyValue {
-	Char32([u8; 32]),	
-	Hash(Hash),
-	Uint64(u64),
-	Bool(bool)
-}
-
 impl content::Trait for Runtime {
 	type Event = Event;
 	type ContentIdentifier = Hash;
-	type PropertyKey = u64;
-	type PropertyValue = PropertyValue;
 }
 
 impl links::Trait for Runtime {
@@ -259,8 +249,6 @@ impl links::Trait for Runtime {
 	type ContentIdentifier = Hash;
 	type LinkIdentifier = u64;
 	type LinkType = u32;
-	type PropertyKey = u64;
-	type PropertyValue = PropertyValue;
 }
 
 construct_runtime!(
