@@ -23,7 +23,8 @@ members = [
 	"node/runtime",
 	"modules/module-template",
 	"modules/content",
-	"modules/links"
+	"modules/links",
+	"primitives/graph-primitives"
 ]
 
 [profile.release]

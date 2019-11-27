@@ -5,25 +5,7 @@ use system::ensure_signed;
 use sr_primitives::RuntimeDebug;
 use sr_primitives::{ traits::{ Member, SimpleArithmetic, Bounded, CheckedAdd } };
 use codec::{Encode, Decode};
-
-
-type PropertyKey = u64;
-
-#[repr(u8)]
-#[derive(Clone, Encode, Decode, PartialEq, Eq, RuntimeDebug)]
-enum PropertyKeyValue {
-	Owner = 0,
-	Hello = 1,
-}
-
-#[derive(Clone, Encode, Decode, PartialEq, Eq, RuntimeDebug)]
-pub enum PropertyValue<Hash, AccountId> {
-	Char32([u8; 32]),	
-	Hash(Hash),
-	Uint64(u64),
-	Bool(bool),
-	AccountId(AccountId)
-}
+use graph_primitives:: { property:: { PropertyKey, PropertyKeyValue, PropertyValue } };
 
 pub trait Trait: system::Trait {
 	/// The overarching event type.

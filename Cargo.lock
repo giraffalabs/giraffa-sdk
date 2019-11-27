@@ -1410,6 +1410,7 @@ version = "0.1.0"
 dependencies = [
  "frame-support 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
  "frame-system 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
+ "graph-primitives 0.1.0",
  "parity-scale-codec 1.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "serde 1.0.103 (registry+https://github.com/rust-lang/crates.io-index)",
  "sr-io 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
@@ -1424,11 +1425,20 @@ version = "0.1.0"
 dependencies = [
  "frame-support 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
  "frame-system 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
+ "graph-primitives 0.1.0",
  "parity-scale-codec 1.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "serde 1.0.103 (registry+https://github.com/rust-lang/crates.io-index)",
  "sr-io 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
  "sr-primitives 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
  "substrate-primitives 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
+]
+
+[[package]]
+name = "graph-primitives"
+version = "0.1.0"
+dependencies = [
+ "parity-scale-codec 1.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "sr-primitives 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
 ]
 
 [[package]]

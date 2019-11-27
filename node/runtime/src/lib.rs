@@ -28,7 +28,6 @@ use version::NativeVersion;
 // graph
 use content;
 use links;
-use codec::{Encode, Decode};
 
 // A few exports that help ease life for downstream crates.
 #[cfg(any(feature = "std", test))]
@@ -234,9 +233,7 @@ impl sudo::Trait for Runtime {
 	type Proposal = Call;
 }
 
-impl module_template::Trait for Runtime {
-	type Event = Event;
-}
+// graph
 
 impl content::Trait for Runtime {
 	type Event = Event;
@@ -264,7 +261,6 @@ construct_runtime!(
 		Balances: balances::{default, Error},
 		TransactionPayment: transaction_payment::{Module, Storage},
 		Sudo: sudo,
-		ModuleTemplate: module_template::{Module, Call, Storage, Event<T>},
 		Content: content::{Module, Call, Storage, Event<T>},
 		Links: links::{Module, Call, Storage, Event<T>},
 		RandomnessCollectiveFlip: randomness_collective_flip::{Module, Call, Storage},

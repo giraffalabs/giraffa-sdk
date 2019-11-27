@@ -1,0 +1,16 @@
+[package]
+name = "graph-primitives"
+version = "0.1.0"
+authors = ["Graph4w3 Team"]
+edition = "2018"
+
+[dependencies]
+codec = { package = "parity-scale-codec", version = "1.1.0", default-features = false, features = ["derive"] }
+sr-primitives = { git = "https://github.com/graph4w3/substrate.git", branch = "master", default-features = false }
+
+[features]
+default = ["std"]
+std = [
+	"codec/std",
+	"sr-primitives/std",
+]
