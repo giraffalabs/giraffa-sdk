@@ -1,6 +1,6 @@
 #![cfg_attr(not(feature = "std"), no_std)]
 
-use support::{decl_module, decl_storage, decl_event, dispatch:: { Result, fmt::Debug }, Parameter};
+use support::{decl_module, decl_storage, decl_event, dispatch:: { Result, fmt::Debug }, Parameter, ensure };
 use system::ensure_signed;
 use sr_primitives::RuntimeDebug;
 use sr_primitives::{ traits::{ Member, SimpleArithmetic, Bounded, CheckedAdd } };
@@ -29,7 +29,8 @@ decl_module! {
 
 		fn deposit_event() = default;
 
-		fn create(origin, cid: T::ContentIdentifier) {
+
+		fn create(origin, cid: T::ContentIdentifier) -> Result {
 			let sender = ensure_signed(origin)?;
 
 			let key = PropertyKey::from(PropertyKeyValue::Owner as u8); 
@@ -38,14 +39,27 @@ decl_module! {
 			Self::do_set_property(cid, key, value.clone());
 
 			Self::deposit_event(RawEvent::ContentPropertySet(sender, cid, key, value));
+
+			Ok(())
 		}
 
-		fn set_property(origin, cid: T::ContentIdentifier, key: PropertyKey, value: PropertyValue<T::Hash, T::AccountId>) {
+		fn set_property(origin, cid: T::ContentIdentifier, key: PropertyKey, value: PropertyValue<T::Hash, T::AccountId>) -> Result {
 			let sender = ensure_signed(origin)?;
-
+			let owner_key = PropertyKey::from(PropertyKeyValue::Owner as u8);
+			let wrap_owner = Self::content_properties((cid, owner_key)).ok_or("Content does not exist")?;
+			// let wrap_sender = <PropertyValue<T::Hash, T::AccountId>>::AccountId(sender.clone());
+			// ensure!(wrap_owner == wrap_sender, "You are not the owner of the content");
+			let owner = match wrap_owner {
+				PropertyValue::AccountId(owner) => owner,
+				_ => return Err("Wrong type")
+			};
+			ensure!(owner == sender.clone(), "You are not the owner of the content");
+			
 			Self::do_set_property(cid, key, value.clone());
 
 			Self::deposit_event(RawEvent::ContentPropertySet(sender, cid, key, value));
+
+			Ok(())
 		}
 
 	}
