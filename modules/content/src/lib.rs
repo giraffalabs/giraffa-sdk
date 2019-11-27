@@ -33,6 +33,7 @@ decl_module! {
 
 
 		fn create(origin, cid: T::ContentIdentifier) -> Result {
+			// Check if signed
 			let sender = ensure_signed(origin)?;
 
 			let key = PropertyKey::from(PropertyKeyValue::Owner as u8); 
@@ -46,11 +47,11 @@ decl_module! {
 		}
 
 		fn set_property(origin, cid: T::ContentIdentifier, key: PropertyKey, value: PropertyValue<T>) -> Result {
+			// Check if signed
 			let sender = ensure_signed(origin)?;
+			// Check if owner of cid
 			let owner_key = PropertyKey::from(PropertyKeyValue::Owner as u8);
 			let wrap_owner = Self::content_properties((cid, owner_key)).ok_or("Content does not exist")?;
-			// let wrap_sender = <PropertyValue<T::Hash, T::AccountId>>::AccountId(sender.clone());
-			// ensure!(wrap_owner == wrap_sender, "You are not the owner of the content");
 			let owner = match wrap_owner {
 				PropertyValueT::AccountId(owner) => owner,
 				_ => return Err("Wrong type")
