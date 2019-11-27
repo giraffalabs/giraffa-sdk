@@ -6,7 +6,6 @@ edition = "2018"
 
 [dependencies]
 # third party denpendencies
-derive_more = "0.15.0"
 futures = "0.3.1"
 futures01 = { package = "futures", version = "0.1.29" }
 codec = { package = "parity-scale-codec", version = "1.1.0" }
@@ -27,7 +26,7 @@ substrate-executor = { git = "https://github.com/graph4w3/substrate.git", branch
 substrate-service = { git = "https://github.com/graph4w3/substrate.git", branch = "master" }
 substrate-client = { git = "https://github.com/graph4w3/substrate.git", branch = "master" }
 inherents = { package = "substrate-inherents", git = "https://github.com/graph4w3/substrate.git", branch = "master" }
-transaction-pool = { package = "substrate-transaction-pool", git = "https://github.com/graph4w3/substrate.git", branch = "master" }
+transaction-pool = { package = "sc-transaction-pool", git = "https://github.com/graph4w3/substrate.git", branch = "master" }
 network = { package = "substrate-network", git = "https://github.com/graph4w3/substrate.git", branch = "master" }
 basic-authorship = { package = "substrate-basic-authorship", git = "https://github.com/graph4w3/substrate.git", branch = "master" }
 

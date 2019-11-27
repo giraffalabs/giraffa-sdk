@@ -43,7 +43,6 @@ timestamp = { package = "pallet-timestamp", git = "https://github.com/graph4w3/s
 transaction-payment = { package = "pallet-transaction-payment", git = "https://github.com/graph4w3/substrate.git", branch = "master", default-features = false }
 
 # graph dependencies
-module-template = { package = "module-template", path = "../../modules/module-template", default-features = false }
 content = { package = "graph-content", path = "../../modules/content", default-features = false }
 links = { package = "graph-links", path = "../../modules/links", default-features = false }
 
@@ -79,7 +78,6 @@ std = [
 	"transaction-payment/std",
 	"tx-pool-api/std",
 	"version/std",
-	"module-template/std",
 	"content/std",
 	"links/std"
 ]
