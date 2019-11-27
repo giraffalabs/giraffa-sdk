@@ -5,7 +5,7 @@ use system::ensure_signed;
 use sr_primitives::RuntimeDebug;
 use sr_primitives::{ traits::{ Member, SimpleArithmetic, Bounded, CheckedAdd } };
 use codec::{Encode, Decode};
-use graph_primitives:: { property:: { PropertyKey, PropertyKeyValue, PropertyValue } };
+use graph_primitives:: { property:: { PropertyKey, PropertyKeyValue, PropertyValue as PropertyValueT} };
 
 pub trait Trait: system::Trait {
 	/// The overarching event type.
@@ -16,10 +16,12 @@ pub trait Trait: system::Trait {
 
 }
 
+type PropertyValue<T> = PropertyValueT<<T as system::Trait>::Hash, <T as system::Trait>::AccountId>;
+
 decl_storage! {
 	trait Store for Module<T: Trait> as Content {
 		// Key/Value storage for each content
-		ContentProperties get(content_properties): map (T::ContentIdentifier, PropertyKey) => Option<PropertyValue<T::Hash, T::AccountId>>;
+		ContentProperties get(content_properties): map (T::ContentIdentifier, PropertyKey) => Option<PropertyValue<T>>;
 	}
 }
 
@@ -34,7 +36,7 @@ decl_module! {
 			let sender = ensure_signed(origin)?;
 
 			let key = PropertyKey::from(PropertyKeyValue::Owner as u8); 
-			let value = <PropertyValue<T::Hash, T::AccountId>>::AccountId(sender.clone());
+			let value = <PropertyValue<T>>::AccountId(sender.clone());
 
 			Self::do_set_property(cid, key, value.clone());
 
@@ -43,14 +45,14 @@ decl_module! {
 			Ok(())
 		}
 
-		fn set_property(origin, cid: T::ContentIdentifier, key: PropertyKey, value: PropertyValue<T::Hash, T::AccountId>) -> Result {
+		fn set_property(origin, cid: T::ContentIdentifier, key: PropertyKey, value: PropertyValue<T>) -> Result {
 			let sender = ensure_signed(origin)?;
 			let owner_key = PropertyKey::from(PropertyKeyValue::Owner as u8);
 			let wrap_owner = Self::content_properties((cid, owner_key)).ok_or("Content does not exist")?;
 			// let wrap_sender = <PropertyValue<T::Hash, T::AccountId>>::AccountId(sender.clone());
 			// ensure!(wrap_owner == wrap_sender, "You are not the owner of the content");
 			let owner = match wrap_owner {
-				PropertyValue::AccountId(owner) => owner,
+				PropertyValueT::AccountId(owner) => owner,
 				_ => return Err("Wrong type")
 			};
 			ensure!(owner == sender.clone(), "You are not the owner of the content");
@@ -70,17 +72,18 @@ decl_event!(
 	where 
 		AccountId = <T as system::Trait>::AccountId,
 		ContentIdentifier = <T as Trait>::ContentIdentifier,
-		Hash = <T as system::Trait>::Hash
+		Key = PropertyKey,
+		Value = PropertyValue<T>,
 	{
 		SomethingStored(u32, AccountId),
 		// A property of a content is set.
-		ContentPropertySet(AccountId, ContentIdentifier, PropertyKey, PropertyValue<Hash, AccountId>),
+		ContentPropertySet(AccountId, ContentIdentifier, Key, Value),
 	}
 );
 
 impl<T: Trait> Module<T> {
 
-	fn do_set_property(cid: T::ContentIdentifier, key: PropertyKey, value: PropertyValue<T::Hash, T::AccountId>) {
+	fn do_set_property(cid: T::ContentIdentifier, key: PropertyKey, value: PropertyValue<T>) {
 		<ContentProperties<T>>::insert((cid, key), value);
 	}
 
