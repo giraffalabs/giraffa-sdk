@@ -12,42 +12,42 @@ safe-mix = { version = "1.0.0", default-features = false }
 serde = { version = "1.0.102", optional = true, features = ["derive"] }
 
 # primitives
-aura-primitives = { package = "substrate-consensus-aura-primitives", git = "https://github.com/graph4w3/substrate.git", branch = "master", default-features = false }
-block-builder-api = { package = "substrate-block-builder-runtime-api", git = "https://github.com/graph4w3/substrate.git", branch = "master", default-features = false}
-inherents = { package = "substrate-inherents", git = "https://github.com/graph4w3/substrate.git", branch = "master", default-features = false}
-offchain-primitives = { package = "substrate-offchain-primitives", git = "https://github.com/graph4w3/substrate.git", branch = "master", default-features = false }
-primitives = { package = "substrate-primitives", git = "https://github.com/graph4w3/substrate.git", branch = "master", default-features = false }
-rstd = { package = "sr-std", git = "https://github.com/graph4w3/substrate.git", branch = "master", default-features = false }
-sr-api = { git = "https://github.com/graph4w3/substrate.git", branch = "master", default-features = false }
-sr-primitives = { git = "https://github.com/graph4w3/substrate.git", branch = "master", default-features = false }
-substrate-session = { git = "https://github.com/graph4w3/substrate.git", branch = "master", default-features = false }
-tx-pool-api = { package = "substrate-transaction-pool-runtime-api", git = "https://github.com/graph4w3/substrate.git", branch = "master", default-features = false }
-version = { package = "sr-version", git = "https://github.com/graph4w3/substrate.git", branch = "master", default-features = false }
+aura-primitives = { package = "substrate-consensus-aura-primitives", git = "https://github.com/giraffalabs/substrate.git", branch = "master", default-features = false }
+block-builder-api = { package = "substrate-block-builder-runtime-api", git = "https://github.com/giraffalabs/substrate.git", branch = "master", default-features = false}
+inherents = { package = "substrate-inherents", git = "https://github.com/giraffalabs/substrate.git", branch = "master", default-features = false}
+offchain-primitives = { package = "substrate-offchain-primitives", git = "https://github.com/giraffalabs/substrate.git", branch = "master", default-features = false }
+primitives = { package = "substrate-primitives", git = "https://github.com/giraffalabs/substrate.git", branch = "master", default-features = false }
+rstd = { package = "sr-std", git = "https://github.com/giraffalabs/substrate.git", branch = "master", default-features = false }
+sr-api = { git = "https://github.com/giraffalabs/substrate.git", branch = "master", default-features = false }
+sr-primitives = { git = "https://github.com/giraffalabs/substrate.git", branch = "master", default-features = false }
+substrate-session = { git = "https://github.com/giraffalabs/substrate.git", branch = "master", default-features = false }
+tx-pool-api = { package = "substrate-transaction-pool-runtime-api", git = "https://github.com/giraffalabs/substrate.git", branch = "master", default-features = false }
+version = { package = "sr-version", git = "https://github.com/giraffalabs/substrate.git", branch = "master", default-features = false }
 # dev dependencies
-runtime-io = { package = "sr-io", git = "https://github.com/graph4w3/substrate.git", branch = "master", default-features = false }
+runtime-io = { package = "sr-io", git = "https://github.com/giraffalabs/substrate.git", branch = "master", default-features = false }
 
 # frame dependenciies
-executive = { package = "frame-executive", git = "https://github.com/graph4w3/substrate.git", branch = "master", default-features = false }
-support = { package = "frame-support", git = "https://github.com/graph4w3/substrate.git", branch = "master", default-features = false }
-system = { package = "frame-system", git = "https://github.com/graph4w3/substrate.git", branch = "master", default-features = false }
-system-rpc-runtime-api = { package = "frame-system-rpc-runtime-api", git = "https://github.com/graph4w3/substrate.git", branch = "master", default-features = false }
+executive = { package = "frame-executive", git = "https://github.com/giraffalabs/substrate.git", branch = "master", default-features = false }
+support = { package = "frame-support", git = "https://github.com/giraffalabs/substrate.git", branch = "master", default-features = false }
+system = { package = "frame-system", git = "https://github.com/giraffalabs/substrate.git", branch = "master", default-features = false }
+system-rpc-runtime-api = { package = "frame-system-rpc-runtime-api", git = "https://github.com/giraffalabs/substrate.git", branch = "master", default-features = false }
 
 # palette dependencies
-aura = { package = "pallet-aura", git = "https://github.com/graph4w3/substrate.git", branch = "master", default-features = false }
-balances = { package = "pallet-balances", git = "https://github.com/graph4w3/substrate.git", branch = "master", default-features = false }
-grandpa = { package = "pallet-grandpa", git = "https://github.com/graph4w3/substrate.git", branch = "master", default-features = false }
-indices = { package = "pallet-indices", git = "https://github.com/graph4w3/substrate.git", branch = "master", default-features = false }
-randomness-collective-flip = { package = "pallet-randomness-collective-flip", git = "https://github.com/graph4w3/substrate.git", branch = "master", default-features = false }
-sudo = { package = "pallet-sudo", git = "https://github.com/graph4w3/substrate.git", branch = "master", default-features = false }
-timestamp = { package = "pallet-timestamp", git = "https://github.com/graph4w3/substrate.git", branch = "master", default-features = false }
-transaction-payment = { package = "pallet-transaction-payment", git = "https://github.com/graph4w3/substrate.git", branch = "master", default-features = false }
+aura = { package = "pallet-aura", git = "https://github.com/giraffalabs/substrate.git", branch = "master", default-features = false }
+balances = { package = "pallet-balances", git = "https://github.com/giraffalabs/substrate.git", branch = "master", default-features = false }
+grandpa = { package = "pallet-grandpa", git = "https://github.com/giraffalabs/substrate.git", branch = "master", default-features = false }
+indices = { package = "pallet-indices", git = "https://github.com/giraffalabs/substrate.git", branch = "master", default-features = false }
+randomness-collective-flip = { package = "pallet-randomness-collective-flip", git = "https://github.com/giraffalabs/substrate.git", branch = "master", default-features = false }
+sudo = { package = "pallet-sudo", git = "https://github.com/giraffalabs/substrate.git", branch = "master", default-features = false }
+timestamp = { package = "pallet-timestamp", git = "https://github.com/giraffalabs/substrate.git", branch = "master", default-features = false }
+transaction-payment = { package = "pallet-transaction-payment", git = "https://github.com/giraffalabs/substrate.git", branch = "master", default-features = false }
 
 # graph dependencies
 content = { package = "giraffa-content", path = "../../modules/content", default-features = false }
 links = { package = "giraffa-links", path = "../../modules/links", default-features = false }
 
 [build-dependencies]
-wasm-builder-runner = { package = 'substrate-wasm-builder-runner', git = "https://github.com/graph4w3/substrate.git", branch = "master" }
+wasm-builder-runner = { package = 'substrate-wasm-builder-runner', git = "https://github.com/giraffalabs/substrate.git", branch = "master" }
 
 [features]
 default = ["std"]
