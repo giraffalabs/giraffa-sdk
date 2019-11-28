@@ -1,5 +1,5 @@
 [package]
-name = "graph-content"
+name = "giraffa-content"
 version = "0.1.0"
 authors = ["Graph4w3 Team"]
 edition = "2018"

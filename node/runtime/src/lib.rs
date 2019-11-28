@@ -94,8 +94,8 @@ pub mod opaque {
 
 /// This runtime version.
 pub const VERSION: RuntimeVersion = RuntimeVersion {
-	spec_name: create_runtime_str!("graph-sdk"),
-	impl_name: create_runtime_str!("graph-sdk"),
+	spec_name: create_runtime_str!("giraffa-sdk"),
+	impl_name: create_runtime_str!("giraffa-sdk"),
 	authoring_version: 1,
 	spec_version: 1,
 	impl_version: 1,

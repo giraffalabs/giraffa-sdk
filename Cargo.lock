@@ -1358,6 +1358,109 @@ dependencies = [
 ]
 
 [[package]]
+name = "giraffa-content"
+version = "0.1.0"
+dependencies = [
+ "frame-support 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
+ "frame-system 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
+ "parity-scale-codec 1.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "serde 1.0.103 (registry+https://github.com/rust-lang/crates.io-index)",
+ "sr-io 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
+ "sr-primitives 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
+ "substrate-primitives 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
+]
+
+[[package]]
+name = "giraffa-links"
+version = "0.1.0"
+dependencies = [
+ "frame-support 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
+ "frame-system 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
+ "parity-scale-codec 1.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "serde 1.0.103 (registry+https://github.com/rust-lang/crates.io-index)",
+ "sr-io 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
+ "sr-primitives 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
+ "substrate-primitives 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
+]
+
+[[package]]
+name = "giraffa-sdk"
+version = "0.1.0"
+dependencies = [
+ "ctrlc 3.1.3 (registry+https://github.com/rust-lang/crates.io-index)",
+ "giraffa-sdk-cli 0.1.0",
+ "substrate-build-script-utils 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
+ "vergen 3.0.4 (registry+https://github.com/rust-lang/crates.io-index)",
+]
+
+[[package]]
+name = "giraffa-sdk-cli"
+version = "0.1.0"
+dependencies = [
+ "ctrlc 3.1.3 (registry+https://github.com/rust-lang/crates.io-index)",
+ "exit-future 0.1.4 (registry+https://github.com/rust-lang/crates.io-index)",
+ "futures 0.1.29 (registry+https://github.com/rust-lang/crates.io-index)",
+ "futures 0.3.1 (registry+https://github.com/rust-lang/crates.io-index)",
+ "giraffa-sdk-runtime 0.1.0",
+ "log 0.4.8 (registry+https://github.com/rust-lang/crates.io-index)",
+ "parity-scale-codec 1.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "parking_lot 0.9.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "sc-transaction-pool 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
+ "sr-io 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
+ "sr-primitives 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
+ "substrate-basic-authorship 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
+ "substrate-cli 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
+ "substrate-client 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
+ "substrate-consensus-aura 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
+ "substrate-consensus-aura-primitives 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
+ "substrate-executor 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
+ "substrate-finality-grandpa 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
+ "substrate-finality-grandpa-primitives 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
+ "substrate-inherents 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
+ "substrate-network 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
+ "substrate-primitives 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
+ "substrate-service 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
+ "tokio 0.1.22 (registry+https://github.com/rust-lang/crates.io-index)",
+ "trie-root 0.15.2 (registry+https://github.com/rust-lang/crates.io-index)",
+]
+
+[[package]]
+name = "giraffa-sdk-runtime"
+version = "0.1.0"
+dependencies = [
+ "frame-executive 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
+ "frame-support 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
+ "frame-system 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
+ "frame-system-rpc-runtime-api 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
+ "giraffa-content 0.1.0",
+ "giraffa-links 0.1.0",
+ "pallet-aura 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
+ "pallet-balances 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
+ "pallet-grandpa 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
+ "pallet-indices 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
+ "pallet-randomness-collective-flip 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
+ "pallet-sudo 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
+ "pallet-timestamp 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
+ "pallet-transaction-payment 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
+ "parity-scale-codec 1.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "safe-mix 1.0.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "serde 1.0.103 (registry+https://github.com/rust-lang/crates.io-index)",
+ "sr-api 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
+ "sr-io 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
+ "sr-primitives 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
+ "sr-std 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
+ "sr-version 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
+ "substrate-block-builder-runtime-api 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
+ "substrate-consensus-aura-primitives 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
+ "substrate-inherents 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
+ "substrate-offchain-primitives 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
+ "substrate-primitives 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
+ "substrate-session 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
+ "substrate-transaction-pool-runtime-api 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
+ "substrate-wasm-builder-runner 1.0.4 (git+https://github.com/graph4w3/substrate.git)",
+]
+
+[[package]]
 name = "glob"
 version = "0.3.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1402,109 +1505,6 @@ dependencies = [
  "serde_json 1.0.41 (registry+https://github.com/rust-lang/crates.io-index)",
  "tokio-executor 0.2.0-alpha.6 (registry+https://github.com/rust-lang/crates.io-index)",
  "tokio-io 0.2.0-alpha.6 (registry+https://github.com/rust-lang/crates.io-index)",
-]
-
-[[package]]
-name = "graph-content"
-version = "0.1.0"
-dependencies = [
- "frame-support 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
- "frame-system 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
- "parity-scale-codec 1.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "serde 1.0.103 (registry+https://github.com/rust-lang/crates.io-index)",
- "sr-io 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
- "sr-primitives 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
- "substrate-primitives 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
-]
-
-[[package]]
-name = "graph-links"
-version = "0.1.0"
-dependencies = [
- "frame-support 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
- "frame-system 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
- "parity-scale-codec 1.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "serde 1.0.103 (registry+https://github.com/rust-lang/crates.io-index)",
- "sr-io 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
- "sr-primitives 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
- "substrate-primitives 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
-]
-
-[[package]]
-name = "graph-sdk"
-version = "0.1.0"
-dependencies = [
- "ctrlc 3.1.3 (registry+https://github.com/rust-lang/crates.io-index)",
- "graph-sdk-cli 0.1.0",
- "substrate-build-script-utils 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
- "vergen 3.0.4 (registry+https://github.com/rust-lang/crates.io-index)",
-]
-
-[[package]]
-name = "graph-sdk-cli"
-version = "0.1.0"
-dependencies = [
- "ctrlc 3.1.3 (registry+https://github.com/rust-lang/crates.io-index)",
- "exit-future 0.1.4 (registry+https://github.com/rust-lang/crates.io-index)",
- "futures 0.1.29 (registry+https://github.com/rust-lang/crates.io-index)",
- "futures 0.3.1 (registry+https://github.com/rust-lang/crates.io-index)",
- "graph-sdk-runtime 0.1.0",
- "log 0.4.8 (registry+https://github.com/rust-lang/crates.io-index)",
- "parity-scale-codec 1.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "parking_lot 0.9.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "sc-transaction-pool 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
- "sr-io 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
- "sr-primitives 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
- "substrate-basic-authorship 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
- "substrate-cli 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
- "substrate-client 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
- "substrate-consensus-aura 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
- "substrate-consensus-aura-primitives 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
- "substrate-executor 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
- "substrate-finality-grandpa 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
- "substrate-finality-grandpa-primitives 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
- "substrate-inherents 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
- "substrate-network 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
- "substrate-primitives 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
- "substrate-service 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
- "tokio 0.1.22 (registry+https://github.com/rust-lang/crates.io-index)",
- "trie-root 0.15.2 (registry+https://github.com/rust-lang/crates.io-index)",
-]
-
-[[package]]
-name = "graph-sdk-runtime"
-version = "0.1.0"
-dependencies = [
- "frame-executive 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
- "frame-support 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
- "frame-system 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
- "frame-system-rpc-runtime-api 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
- "graph-content 0.1.0",
- "graph-links 0.1.0",
- "pallet-aura 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
- "pallet-balances 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
- "pallet-grandpa 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
- "pallet-indices 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
- "pallet-randomness-collective-flip 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
- "pallet-sudo 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
- "pallet-timestamp 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
- "pallet-transaction-payment 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
- "parity-scale-codec 1.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "safe-mix 1.0.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "serde 1.0.103 (registry+https://github.com/rust-lang/crates.io-index)",
- "sr-api 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
- "sr-io 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
- "sr-primitives 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
- "sr-std 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
- "sr-version 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
- "substrate-block-builder-runtime-api 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
- "substrate-consensus-aura-primitives 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
- "substrate-inherents 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
- "substrate-offchain-primitives 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
- "substrate-primitives 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
- "substrate-session 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
- "substrate-transaction-pool-runtime-api 2.0.0 (git+https://github.com/graph4w3/substrate.git)",
- "substrate-wasm-builder-runner 1.0.4 (git+https://github.com/graph4w3/substrate.git)",
 ]
 
 [[package]]

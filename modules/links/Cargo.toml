@@ -1,5 +1,5 @@
 [package]
-name = "graph-links"
+name = "giraffa-links"
 version = "0.1.0"
 authors = ["Graph4w3 Team"]
 edition = "2018"

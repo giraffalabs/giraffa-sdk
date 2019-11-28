@@ -1,5 +1,5 @@
 [package]
-name = "graph-sdk-cli"
+name = "giraffa-sdk-cli"
 version = "0.1.0"
 authors = ["Graph4w3 Team"]
 edition = "2018"
@@ -34,7 +34,7 @@ basic-authorship = { package = "substrate-basic-authorship", git = "https://gith
 runtime-io = { package = "sr-io",  git = "https://github.com/graph4w3/substrate.git", branch = "master" }
 
 # Node-specific dependencies
-runtime = { package = "graph-sdk-runtime", path = "../runtime" }
+runtime = { package = "giraffa-sdk-runtime", path = "../runtime" }
 
 # CLI-specific dependencies
 substrate-cli = { git = "https://github.com/graph4w3/substrate.git", branch = "master", optional = true }
