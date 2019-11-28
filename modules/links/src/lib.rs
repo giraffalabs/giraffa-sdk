@@ -5,7 +5,7 @@ use system::ensure_signed;
 use sr_primitives::RuntimeDebug;
 use sr_primitives::{ traits::{ Member, SimpleArithmetic, Bounded, CheckedAdd } };
 use codec::{Encode, Decode};
-use graph_primitives:: { property:: { PropertyKey, PropertyKeyValue, PropertyValue } };
+use graph_primitives:: { property:: { PropertyKey, PropertyKeyValue, PropertyValue as PropertyValueT} };
 
 
 pub trait Trait: system::Trait {
@@ -23,6 +23,8 @@ pub trait Trait: system::Trait {
 
 }
 
+type PropertyValue<T> = PropertyValueT<<T as system::Trait>::Hash, <T as system::Trait>::AccountId>;
+
 decl_storage! {
 	trait Store for Module<T: Trait> as Links {
 		// Link Count
@@ -32,7 +34,7 @@ decl_storage! {
 		Links get(links): map (T::ContentIdentifier, T::ContentIdentifier, T::LinkType) => T::LinkIdentifier;
 
 		// Key/Value storage for each link
-		LinkProperties get(link_properties): map (T::LinkIdentifier, PropertyKey) => Option<PropertyValue<T::Hash, T::AccountId>>;
+		LinkProperties get(link_properties): map (T::LinkIdentifier, PropertyKey) => Option<PropertyValue<T>>;
 	}
 }
 
@@ -55,7 +57,7 @@ decl_module! {
 			Self::deposit_event(RawEvent::ContentLinked(sender, from, to, link_type));
 		}
 
-		fn set_property(origin, lid: T::LinkIdentifier, key: PropertyKey, value: PropertyValue<T::Hash, T::AccountId>) {
+		fn set_property(origin, lid: T::LinkIdentifier, key: PropertyKey, value: PropertyValue<T>) {
 			let sender = ensure_signed(origin)?;
 
 			<LinkProperties<T>>::insert((lid, key), value.clone());
@@ -73,12 +75,13 @@ decl_event!(
 		ContentIdentifier = <T as Trait>::ContentIdentifier,
 		LinkIdentifier = <T as Trait>::LinkIdentifier,
 		LinkType = <T as Trait>::LinkType,
-		Hash = <T as system::Trait>::Hash
+		Key = PropertyKey,
+		Value = PropertyValue<T>,
 	{
 		SomethingStored(u32, AccountId),
 		// A content was linked.
 		ContentLinked(AccountId, ContentIdentifier, ContentIdentifier, LinkType),
 		// A property of a link was set.
-		LinkPropertySet(AccountId, LinkIdentifier, PropertyKey, PropertyValue<Hash, AccountId>),
+		LinkPropertySet(AccountId, LinkIdentifier, Key, Value),
 	}
 );
