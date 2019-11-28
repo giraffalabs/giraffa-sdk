@@ -1,17 +1,17 @@
 [[bin]]
-name = "graph-sdk"
+name = "giraffa-sdk"
 path = "node/cli/bin/main.rs"
 
 [package]
-name = "graph-sdk"
+name = "giraffa-sdk"
 version = "0.1.0"
 authors = ["Graph4w3 Team"]
 edition = "2018"
-default-run = "graph-sdk"
+default-run = "giraffa-sdk"
 
 [dependencies]
 ctrlc = { version = "3.1.3", features = ["termination"] }
-cli = { package = "graph-sdk-cli", path = "node/cli", features = ["cli"] }
+cli = { package = "giraffa-sdk-cli", path = "node/cli", features = ["cli"] }
 
 [build-dependencies]
 vergen = "3"

@@ -1,5 +1,5 @@
 [package]
-name = "graph-content"
+name = "giraffa-content"
 version = "0.1.0"
 authors = ["Graph4w3 Team"]
 edition = "2018"
@@ -14,7 +14,7 @@ system = { package = "frame-system", git = "https://github.com/graph4w3/substrat
 # Dev
 runtime-io = { package = "sr-io", git = "https://github.com/graph4w3/substrate.git", branch = "master", default-features = false }
 # Graph
-graph-primitives = { package = "graph-primitives", path = "../../primitives/graph-primitives", default-features = false }
+graph-primitives = { package = "giraffa-primitives", path = "../../primitives/graph-primitives", default-features = false }
 
 [dev-dependencies]
 primitives = { package = "substrate-primitives",  git = "https://github.com/graph4w3/substrate.git", branch = "master" }
