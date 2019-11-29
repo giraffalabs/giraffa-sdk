@@ -1,4 +1,4 @@
-# Giraffa SDK; [![GitHub license](https://img.shields.io/github/license/giraffalabs/giraffa-sdk)](LICENSE) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+# Giraffa SDK &middot; [![GitHub license](https://img.shields.io/github/license/giraffalabs/giraffa-sdk)](LICENSE) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
 Graph SDK is an:
 
