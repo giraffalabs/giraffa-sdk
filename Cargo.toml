@@ -5,7 +5,7 @@ path = "node/cli/bin/main.rs"
 [package]
 name = "giraffa-sdk"
 version = "0.1.0"
-authors = ["Graph4w3 Team"]
+authors = ["Giraffa Labs"]
 edition = "2018"
 default-run = "giraffa-sdk"
 

@@ -1,21 +1,21 @@
 [package]
 name = "giraffa-links"
 version = "0.1.0"
-authors = ["Graph4w3 Team"]
+authors = ["Giraffa Labs"]
 edition = "2018"
 
 [dependencies]
 serde = { version = "1.0.103", optional = true }
 codec = { package = "parity-scale-codec", version = "1.1.0", default-features = false, features = ["derive"] }
-runtime-io = { package = "sr-io", git = "https://github.com/giraffalabs/substrate.git", branch = "master", default-features = false }
-sr-primitives = { git = "https://github.com/giraffalabs/substrate.git", branch = "master", default-features = false }
+runtime-io = { package = "sp-io", git = "https://github.com/giraffalabs/substrate.git", branch = "master", default-features = false }
+sp-runtime = { git = "https://github.com/giraffalabs/substrate.git", branch = "master", default-features = false }
 support = { package = "frame-support", git = "https://github.com/giraffalabs/substrate.git", branch = "master", default-features = false }
 system = { package = "frame-system", git = "https://github.com/giraffalabs/substrate.git", branch = "master", default-features = false }
 # Graph
 graph-primitives = { package = "giraffa-primitives", path = "../../primitives/graph-primitives", default-features = false }
 
 [dev-dependencies]
-primitives = { package = "substrate-primitives",  git = "https://github.com/giraffalabs/substrate.git", branch = "master" }
+primitives = { package = "sp-core",  git = "https://github.com/giraffalabs/substrate.git", branch = "master" }
 
 [features]
 default = ["std"]
@@ -23,7 +23,7 @@ std = [
 	"serde",
 	"codec/std",
 	"runtime-io/std",
-	"sr-primitives/std",
+	"sp-runtime/std",
 	"support/std",
 	"system/std",
 	"graph-primitives/std",

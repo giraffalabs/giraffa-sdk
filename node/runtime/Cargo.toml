@@ -1,7 +1,7 @@
 [package]
 name = "giraffa-sdk-runtime"
 version = "0.1.0"
-authors = ["Graph4w3 Team"]
+authors = ["Giraffa Labs"]
 edition = "2018"
 build = "build.rs"
 
@@ -12,19 +12,19 @@ safe-mix = { version = "1.0.0", default-features = false }
 serde = { version = "1.0.102", optional = true, features = ["derive"] }
 
 # primitives
-aura-primitives = { package = "substrate-consensus-aura-primitives", git = "https://github.com/giraffalabs/substrate.git", branch = "master", default-features = false }
-block-builder-api = { package = "substrate-block-builder-runtime-api", git = "https://github.com/giraffalabs/substrate.git", branch = "master", default-features = false}
-inherents = { package = "substrate-inherents", git = "https://github.com/giraffalabs/substrate.git", branch = "master", default-features = false}
-offchain-primitives = { package = "substrate-offchain-primitives", git = "https://github.com/giraffalabs/substrate.git", branch = "master", default-features = false }
-primitives = { package = "substrate-primitives", git = "https://github.com/giraffalabs/substrate.git", branch = "master", default-features = false }
-rstd = { package = "sr-std", git = "https://github.com/giraffalabs/substrate.git", branch = "master", default-features = false }
-sr-api = { git = "https://github.com/giraffalabs/substrate.git", branch = "master", default-features = false }
-sr-primitives = { git = "https://github.com/giraffalabs/substrate.git", branch = "master", default-features = false }
-substrate-session = { git = "https://github.com/giraffalabs/substrate.git", branch = "master", default-features = false }
-tx-pool-api = { package = "substrate-transaction-pool-runtime-api", git = "https://github.com/giraffalabs/substrate.git", branch = "master", default-features = false }
-version = { package = "sr-version", git = "https://github.com/giraffalabs/substrate.git", branch = "master", default-features = false }
+aura-primitives = { package = "sp-consensus-aura", git = "https://github.com/giraffalabs/substrate.git", branch = "master", default-features = false }
+block-builder-api = { package = "sp-block-builder", git = "https://github.com/giraffalabs/substrate.git", branch = "master", default-features = false}
+inherents = { package = "sp-inherents", git = "https://github.com/giraffalabs/substrate.git", branch = "master", default-features = false}
+offchain-primitives = { package = "sp-offchain", git = "https://github.com/giraffalabs/substrate.git", branch = "master", default-features = false }
+primitives = { package = "sp-core", git = "https://github.com/giraffalabs/substrate.git", branch = "master", default-features = false }
+rstd = { package = "sp-std", git = "https://github.com/giraffalabs/substrate.git", branch = "master", default-features = false }
+sp-api = { git = "https://github.com/giraffalabs/substrate.git", branch = "master", default-features = false }
+sp-runtime = { git = "https://github.com/giraffalabs/substrate.git", branch = "master", default-features = false }
+sp-session = { git = "https://github.com/giraffalabs/substrate.git", branch = "master", default-features = false }
+txpool-runtime-api = { package = "sp-transaction-pool-runtime-api", git = "https://github.com/giraffalabs/substrate.git", branch = "master", default-features = false }
+version = { package = "sp-version", git = "https://github.com/giraffalabs/substrate.git", branch = "master", default-features = false }
 # dev dependencies
-runtime-io = { package = "sr-io", git = "https://github.com/giraffalabs/substrate.git", branch = "master", default-features = false }
+runtime-io = { package = "sp-io", git = "https://github.com/giraffalabs/substrate.git", branch = "master", default-features = false }
 
 # frame dependenciies
 executive = { package = "frame-executive", git = "https://github.com/giraffalabs/substrate.git", branch = "master", default-features = false }
@@ -42,9 +42,9 @@ sudo = { package = "pallet-sudo", git = "https://github.com/giraffalabs/substrat
 timestamp = { package = "pallet-timestamp", git = "https://github.com/giraffalabs/substrate.git", branch = "master", default-features = false }
 transaction-payment = { package = "pallet-transaction-payment", git = "https://github.com/giraffalabs/substrate.git", branch = "master", default-features = false }
 
-# graph dependencies
-content = { package = "giraffa-content", path = "../../modules/content", default-features = false }
-links = { package = "giraffa-links", path = "../../modules/links", default-features = false }
+# # graph dependencies
+# content = { package = "giraffa-content", path = "../../modules/content", default-features = false }
+# links = { package = "giraffa-links", path = "../../modules/links", default-features = false }
 
 [build-dependencies]
 wasm-builder-runner = { package = 'substrate-wasm-builder-runner', git = "https://github.com/giraffalabs/substrate.git", branch = "master" }
@@ -68,16 +68,16 @@ std = [
 	"runtime-io/std",
 	"safe-mix/std",
 	"serde",
-	"sr-api/std",
-	"sr-primitives/std",
-	"substrate-session/std",
+	"sp-api/std",
+	"sp-runtime/std",
+	"sp-session/std",
 	"sudo/std",
 	"support/std",
 	"system/std",
 	"timestamp/std",
 	"transaction-payment/std",
-	"tx-pool-api/std",
+	"txpool-runtime-api/std",
 	"version/std",
-	"content/std",
-	"links/std"
+	# "content/std",
+	# "links/std"
 ]

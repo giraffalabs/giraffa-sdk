@@ -2,9 +2,9 @@
 
 use support::{decl_module, decl_storage, decl_event, dispatch:: { Result, fmt::Debug }, Parameter};
 use system::ensure_signed;
-use sr_primitives::RuntimeDebug;
-use sr_primitives::{ traits::{ Member, SimpleArithmetic, Bounded, CheckedAdd } };
-use codec::{Encode, Decode};
+use sp_runtime::RuntimeDebug;
+use sp_runtime::{ traits::{ Member, SimpleArithmetic, Bounded, CheckedAdd } };
+use codec::{Codec, Encode, Decode};
 use graph_primitives:: { property:: { PropertyKey, PropertyKeyValue, PropertyValue as PropertyValueT} };
 
 
@@ -13,13 +13,13 @@ pub trait Trait: system::Trait {
 	type Event: From<Event<Self>> + Into<<Self as system::Trait>::Event>;
 
 	/// ID which identifies a content
-	type ContentIdentifier: Parameter + Member + Debug + Copy;
+	type ContentIdentifier: Parameter + Member + Debug + Copy + Codec;
 
 	/// LinkId
-	type LinkIdentifier: Parameter + Member + Debug + Copy + Default + Bounded + SimpleArithmetic;
+	type LinkIdentifier: Parameter + Member + Debug + Copy + Default + Bounded + SimpleArithmetic + Codec;
 
 	/// Link Type
-	type LinkType: Parameter + Member + Debug + Copy;
+	type LinkType: Parameter + Member + Debug + Copy + Codec;
 
 }
 
@@ -28,13 +28,15 @@ type PropertyValue<T> = PropertyValueT<<T as system::Trait>::Hash, <T as system:
 decl_storage! {
 	trait Store for Module<T: Trait> as Links {
 		// Link Count
-		LinkCount get(link_count): T::LinkIdentifier;
+		pub LinkCount get(fn link_count): T::LinkIdentifier;
 
 		// return links id
-		Links get(links): map (T::ContentIdentifier, T::ContentIdentifier, T::LinkType) => T::LinkIdentifier;
+		pub Links get(fn links):
+			map (T::ContentIdentifier, T::ContentIdentifier, T::LinkType) => T::LinkIdentifier;
 
 		// Key/Value storage for each link
-		LinkProperties get(link_properties): map (T::LinkIdentifier, PropertyKey) => Option<PropertyValue<T>>;
+		pub LinkProperties get(fn link_properties):
+			map (T::LinkIdentifier, PropertyKey) => Option<PropertyValue<T>>;
 	}
 }
 
