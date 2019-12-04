@@ -52,7 +52,7 @@ decl_module! {
 			let sender = ensure_signed(origin)?;
 			// Check if owner of cid
 			let owner_key = PropertyKey::from(PropertyKeyValue::Owner as u8);
-			let wrap_owner = Self::content_properties((cid, owner_key)).ok_or("Content does not exist")?;
+			let wrap_owner = Self::content_properties(cid, owner_key).ok_or("Content does not exist")?;
 			let owner = match wrap_owner {
 				PropertyValueT::AccountId(owner) => owner,
 				_ => return Err("Wrong type")
@@ -86,7 +86,7 @@ decl_event!(
 impl<T: Trait> Module<T> {
 
 	fn do_set_property(cid: T::ContentIdentifier, key: PropertyKey, value: PropertyValue<T>) {
-		<ContentProperties<T>>::insert((cid, key), value);
+		<ContentProperties<T>>::insert(cid, key, value);
 	}
 
 }
