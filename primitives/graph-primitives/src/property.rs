@@ -1,4 +1,4 @@
-use sr_primitives::RuntimeDebug;
+use sp_runtime::RuntimeDebug;
 use codec::{Encode, Decode};
 
 pub type PropertyKey = u64;

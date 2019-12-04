@@ -1,11 +1,11 @@
 [package]
 name = "giraffa-sdk-cli"
 version = "0.1.0"
-authors = ["Graph4w3 Team"]
+authors = ["Giraffa Labs"]
 edition = "2018"
 
 [dependencies]
-# third party denpendencies
+# third party dependencies
 futures = "0.3.1"
 futures01 = { package = "futures", version = "0.1.29" }
 codec = { package = "parity-scale-codec", version = "1.1.0" }
@@ -14,30 +14,33 @@ parking_lot = "0.9.0"
 trie-root = "0.15.2"
 
 # primitives
-aura = { package = "substrate-consensus-aura", git = "https://github.com/giraffalabs/substrate.git", branch = "master" }
-aura-primitives = { package = "substrate-consensus-aura-primitives", git = "https://github.com/giraffalabs/substrate.git", branch = "master" }
-grandpa = { package = "substrate-finality-grandpa", git = "https://github.com/giraffalabs/substrate.git", branch = "master" }
-grandpa-primitives = { package = "substrate-finality-grandpa-primitives", git = "https://github.com/giraffalabs/substrate.git", branch = "master" }
-primitives = { package = "substrate-primitives", git = "https://github.com/giraffalabs/substrate.git", branch = "master" }
-sr-primitives = { git = "https://github.com/giraffalabs/substrate.git", branch = "master" }
+aura = { package = "sc-consensus-aura", git = "https://github.com/giraffalabs/substrate.git", branch = "master" }
+aura-primitives = { package = "sp-consensus-aura", git = "https://github.com/giraffalabs/substrate.git", branch = "master" }
+grandpa = { package = "sc-finality-grandpa", git = "https://github.com/giraffalabs/substrate.git", branch = "master" }
+grandpa-primitives = { package = "sp-finality-grandpa", git = "https://github.com/giraffalabs/substrate.git", branch = "master" }
+primitives = { package = "sp-core", git = "https://github.com/giraffalabs/substrate.git", branch = "master" }
+sp-runtime = { git = "https://github.com/giraffalabs/substrate.git", branch = "master" }
+consensus-common = { package = "sp-consensus", git = "https://github.com/giraffalabs/substrate.git", branch = "master" }
+
 
 # core substrate modules
-substrate-executor = { git = "https://github.com/giraffalabs/substrate.git", branch = "master" }
-substrate-service = { git = "https://github.com/giraffalabs/substrate.git", branch = "master" }
-substrate-client = { git = "https://github.com/giraffalabs/substrate.git", branch = "master" }
-inherents = { package = "substrate-inherents", git = "https://github.com/giraffalabs/substrate.git", branch = "master" }
-transaction-pool = { package = "sc-transaction-pool", git = "https://github.com/giraffalabs/substrate.git", branch = "master" }
-network = { package = "substrate-network", git = "https://github.com/giraffalabs/substrate.git", branch = "master" }
-basic-authorship = { package = "substrate-basic-authorship", git = "https://github.com/giraffalabs/substrate.git", branch = "master" }
+sc-executor = { git = "https://github.com/giraffalabs/substrate.git", branch = "master" }
+sc-service = { git = "https://github.com/giraffalabs/substrate.git", branch = "master" }
+sc-client = { git = "https://github.com/giraffalabs/substrate.git", branch = "master" }
+inherents = { package = "sp-inherents", git = "https://github.com/giraffalabs/substrate.git", branch = "master" }
+txpool = { package = "sc-transaction-pool", git = "https://github.com/giraffalabs/substrate.git", branch = "master" }
+txpool-api = { package = "sp-transaction-pool-api", git = "https://github.com/giraffalabs/substrate.git", branch = "master" }
+network = { package = "sc-network", git = "https://github.com/giraffalabs/substrate.git", branch = "master" }
+basic-authorship = { package = "sc-basic-authority", git = "https://github.com/giraffalabs/substrate.git", branch = "master" }
 
 # dev dependencies
-runtime-io = { package = "sr-io",  git = "https://github.com/giraffalabs/substrate.git", branch = "master" }
+runtime-io = { package = "sp-io",  git = "https://github.com/giraffalabs/substrate.git", branch = "master" }
 
 # Node-specific dependencies
 runtime = { package = "giraffa-sdk-runtime", path = "../runtime" }
 
 # CLI-specific dependencies
-substrate-cli = { git = "https://github.com/giraffalabs/substrate.git", branch = "master", optional = true }
+sc-cli = { git = "https://github.com/giraffalabs/substrate.git", branch = "master", optional = true }
 tokio = { version = "0.1.22", optional = true }
 exit-future = { version = "0.1.4", optional = true }
 ctrlc = { version = "3.1.3", features = ["termination"], optional = true }
@@ -45,14 +48,14 @@ ctrlc = { version = "3.1.3", features = ["termination"], optional = true }
 [features]
 default = ["cli"]
 cli = [
-	"substrate-cli",
+	"sc-cli",
 	"tokio",
 	"exit-future",
 	"ctrlc",
-	"substrate-service/rocksdb"
+	"sc-service/rocksdb"
 ]
 wasmtime = [
 	"cli",
-	"substrate-cli/wasmtime",
-	"substrate-service/wasmtime",
+	"sc-cli/wasmtime",
+	"sc-service/wasmtime",
 ]
