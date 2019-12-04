@@ -12,6 +12,7 @@ default-run = "giraffa-sdk"
 [dependencies]
 ctrlc = { version = "3.1.3", features = ["termination"] }
 cli = { package = "giraffa-sdk-cli", path = "node/cli", features = ["cli"] }
+sc-cli = { git = "https://github.com/giraffalabs/substrate.git", branch = "master" }
 
 [build-dependencies]
 vergen = "3"

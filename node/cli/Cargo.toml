@@ -5,7 +5,7 @@ authors = ["Giraffa Labs"]
 edition = "2018"
 
 [dependencies]
-# third party denpendencies
+# third party dependencies
 futures = "0.3.1"
 futures01 = { package = "futures", version = "0.1.29" }
 codec = { package = "parity-scale-codec", version = "1.1.0" }
@@ -20,6 +20,8 @@ grandpa = { package = "sc-finality-grandpa", git = "https://github.com/giraffala
 grandpa-primitives = { package = "sp-finality-grandpa", git = "https://github.com/giraffalabs/substrate.git", branch = "master" }
 primitives = { package = "sp-core", git = "https://github.com/giraffalabs/substrate.git", branch = "master" }
 sp-runtime = { git = "https://github.com/giraffalabs/substrate.git", branch = "master" }
+consensus-common = { package = "sp-consensus", git = "https://github.com/giraffalabs/substrate.git", branch = "master" }
+
 
 # core substrate modules
 sc-executor = { git = "https://github.com/giraffalabs/substrate.git", branch = "master" }
