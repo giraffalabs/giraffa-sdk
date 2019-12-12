@@ -42,9 +42,9 @@ sudo = { package = "pallet-sudo", git = "https://github.com/giraffalabs/substrat
 timestamp = { package = "pallet-timestamp", git = "https://github.com/giraffalabs/substrate.git", branch = "master", default-features = false }
 transaction-payment = { package = "pallet-transaction-payment", git = "https://github.com/giraffalabs/substrate.git", branch = "master", default-features = false }
 
-# # graph dependencies
-# content = { package = "giraffa-content", path = "../../modules/content", default-features = false }
-# links = { package = "giraffa-links", path = "../../modules/links", default-features = false }
+# graph dependencies
+content = { package = "giraffa-content", path = "../../modules/content", default-features = false }
+links = { package = "giraffa-links", path = "../../modules/links", default-features = false }
 
 [build-dependencies]
 wasm-builder-runner = { package = 'substrate-wasm-builder-runner', git = "https://github.com/giraffalabs/substrate.git", branch = "master" }
