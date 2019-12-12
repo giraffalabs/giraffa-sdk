@@ -56,7 +56,7 @@ decl_module! {
 			<Links<T>>::insert((from, to, link_type), new_count);
 			<LinkCount<T>>::put(new_count);
 
-			Self::deposit_event(RawEvent::ContentLinked(sender, from, to, link_type));
+			Self::deposit_event(RawEvent::ContentLinked(sender, new_count, from, to, link_type));
 		}
 
 		fn set_property(origin, lid: T::LinkIdentifier, key: PropertyKey, value: PropertyValue<T>) {
@@ -82,7 +82,7 @@ decl_event!(
 	{
 		SomethingStored(u32, AccountId),
 		// A content was linked.
-		ContentLinked(AccountId, ContentIdentifier, ContentIdentifier, LinkType),
+		ContentLinked(AccountId, LinkIdentifier, ContentIdentifier, ContentIdentifier, LinkType),
 		// A property of a link was set.
 		LinkPropertySet(AccountId, LinkIdentifier, Key, Value),
 	}

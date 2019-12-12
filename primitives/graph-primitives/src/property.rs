@@ -6,8 +6,8 @@ pub type PropertyKey = u64;
 #[repr(u8)]
 #[derive(Clone, Encode, Decode, PartialEq, Eq, RuntimeDebug)]
 pub enum PropertyKeyValue {
-	Owner = 2,
-	Hello = 3,
+	Owner = 0,
+	Hello = 1,
 }
 
 #[derive(Clone, Encode, Decode, PartialEq, Eq, RuntimeDebug)]
