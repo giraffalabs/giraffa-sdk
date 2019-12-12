@@ -1435,6 +1435,8 @@ dependencies = [
  "frame-support 2.0.0 (git+https://github.com/giraffalabs/substrate.git)",
  "frame-system 2.0.0 (git+https://github.com/giraffalabs/substrate.git)",
  "frame-system-rpc-runtime-api 2.0.0 (git+https://github.com/giraffalabs/substrate.git)",
+ "giraffa-content 0.1.0",
+ "giraffa-links 0.1.0",
  "pallet-aura 2.0.0 (git+https://github.com/giraffalabs/substrate.git)",
  "pallet-balances 2.0.0 (git+https://github.com/giraffalabs/substrate.git)",
  "pallet-grandpa 2.0.0 (git+https://github.com/giraffalabs/substrate.git)",

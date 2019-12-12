@@ -42,7 +42,7 @@ decl_module! {
 
 			Self::do_set_property(cid, key, value.clone());
 
-			Self::deposit_event(RawEvent::ContentPropertySet(sender, cid, key, value));
+			Self::deposit_event(RawEvent::ContentCreated(sender, cid));
 
 			Ok(())
 		}
@@ -79,6 +79,7 @@ decl_event!(
 	{
 		SomethingStored(u32, AccountId),
 		// A property of a content is set.
+		ContentCreated(AccountId, ContentIdentifier),
 		ContentPropertySet(AccountId, ContentIdentifier, Key, Value),
 	}
 );

@@ -25,9 +25,9 @@ use version::RuntimeVersion;
 #[cfg(feature = "std")]
 use version::NativeVersion;
 
-// // graph
-// use content;
-// use links;
+// graph
+use content;
+use links;
 
 // A few exports that help ease life for downstream crates.
 #[cfg(any(feature = "std", test))]
@@ -235,17 +235,17 @@ impl sudo::Trait for Runtime {
 
 // graph
 
-// impl content::Trait for Runtime {
-// 	type Event = Event;
-// 	type ContentIdentifier = Hash;
-// }
+impl content::Trait for Runtime {
+	type Event = Event;
+	type ContentIdentifier = Hash;
+}
 
-// impl links::Trait for Runtime {
-// 	type Event = Event;
-// 	type ContentIdentifier = Hash;
-// 	type LinkIdentifier = u64;
-// 	type LinkType = u32;
-// }
+impl links::Trait for Runtime {
+	type Event = Event;
+	type ContentIdentifier = Hash;
+	type LinkIdentifier = u64;
+	type LinkType = u32;
+}
 
 construct_runtime!(
 	pub enum Runtime where
@@ -262,8 +262,8 @@ construct_runtime!(
 		TransactionPayment: transaction_payment::{Module, Storage},
 		RandomnessCollectiveFlip: randomness_collective_flip::{Module, Call, Storage},
 		Sudo: sudo,
-		// Content: content::{Module, Call, Storage, Event<T>},
-		// Links: links::{Module, Call, Storage, Event<T>},
+		Content: content::{Module, Call, Storage, Event<T>},
+		Links: links::{Module, Call, Storage, Event<T>},
 	}
 );
 
